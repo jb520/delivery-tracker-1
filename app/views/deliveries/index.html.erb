@@ -1,8 +1,9 @@
 <div>
   <div>
     <h1>
-      List of all deliveries
+      Delivery Tracker
     </h1>
+    <p>Know if something gets lost in the mail.</p>
   </div>
 </div>
 
@@ -11,7 +12,7 @@
 <div>
   <div>
     <h2>
-      Add a new delivery
+      Expecting a package?
     </h2>
 
     <form action="/insert_delivery" method="post">
@@ -24,11 +25,11 @@
       </div>
 
       <div>
-        <label for="expected_date_box">
-          Expected date
+        <label for="supposed_to_arrive_on_box">
+          Supposed to arrive on
         </label>
 
-        <input type="date" id="expected_date_box" name="query_expected_date">
+        <input type="date" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on">
       </div>
 
       <div>
@@ -90,7 +91,7 @@
         </td>
 
         <td>
-          <%= a_delivery.expected_date %>
+          <%= a_delivery.supposed_to_arrive_on %>
         </td>
 
         <td>

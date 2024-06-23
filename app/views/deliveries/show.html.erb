@@ -30,7 +30,7 @@
         Expected date
       </dt>
       <dd>
-        <%= @the_delivery.expected_date %>
+        <%= @the_delivery.supposed_to_arrive_on %>
       </dd>
 
       <dt>
@@ -76,11 +76,11 @@
       </div>
 
       <div>
-        <label for="expected_date_box">
+        <label for="supposed_to_arrive_on_box">
           Expected date
         </label>
 
-        <input type="date" id="expected_date_box" name="query_expected_date" value="<%= @the_delivery.expected_date %>">
+        <input type="date" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on" value="<%= @the_delivery.supposed_to_arrive_on %>">
       </div>
 
       <div>
