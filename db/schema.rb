@@ -13,12 +13,12 @@
 ActiveRecord::Schema[7.0].define(version: 2024_06_23_183640) do
   create_table "deliveries", force: :cascade do |t|
     t.string "description"
-    t.date "expected_date"
     t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "supposed_to_arrive_on"
     t.integer "user_id"
-    t.date "arrival_date"
+    t.boolean "arrived"
   end
 
   create_table "users", force: :cascade do |t|
