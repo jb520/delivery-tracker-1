@@ -24,6 +24,8 @@ class DeliveriesController < ApplicationController
     the_delivery.description = params.fetch("query_description")
     the_delivery.expected_date = params.fetch("query_expected_date")
     the_delivery.details = params.fetch("query_details")
+    the_delivery.user_id = params.fetch("query_user_id")
+    the_delivery.arrived = false
 
     if the_delivery.valid?
       the_delivery.save
@@ -37,15 +39,13 @@ class DeliveriesController < ApplicationController
     the_id = params.fetch("path_id")
     the_delivery = Delivery.where({ :id => the_id }).at(0)
 
-    the_delivery.description = params.fetch("query_description")
-    the_delivery.expected_date = params.fetch("query_expected_date")
-    the_delivery.details = params.fetch("query_details")
+    the_delivery.arrived = true
 
     if the_delivery.valid?
       the_delivery.save
-      redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
+      redirect_to("/deliveries", { :notice => "Delivery updated successfully."} )
     else
-      redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+      redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
   end
 

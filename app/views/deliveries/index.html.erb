@@ -39,7 +39,7 @@
 
         <textarea id="details_box" name="query_details" rows="3"></textarea>
       </div>
-
+        <input type="hidden" name="query_user_id" value="<%= current_user.id %>">
       <button>
         Log delivery
       </button>
@@ -49,14 +49,17 @@
 
 <hr>
 
-<div>
+<div class="waiting_on">
   <h2>Waiting on</h2>
   <ul>
     <% @waiting_deliveries.each do |a_delivery| %>
     <li>
       <div><%= a_delivery.description %></div>
-      <div>Supposed to arrive on<%= a_delivery.supposed_to_arrive_on %></div>
+      <div>Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></div>
       <div><%= a_delivery.details %></div>
+      <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
+      <button>Mark as recieved</button>
+      </form>
       <br>
     </li>
     <% end %>
@@ -64,7 +67,7 @@
 </div>
 <hr>
 <div>
-  <h2>Recieved</h2>
+  <h2 class="recieved">Recieved</h2>
   <ul>
     <% @arrived_deliveries.each do |a_delivery| %>
     <li>
