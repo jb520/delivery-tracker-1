@@ -22,14 +22,14 @@ class DeliveriesController < ApplicationController
   def create
     the_delivery = Delivery.new
     the_delivery.description = params.fetch("query_description")
-    the_delivery.expected_date = params.fetch("query_expected_date")
+    the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
     the_delivery.details = params.fetch("query_details")
     the_delivery.user_id = params.fetch("query_user_id")
     the_delivery.arrived = false
 
     if the_delivery.valid?
       the_delivery.save
-      redirect_to("/deliveries", { :notice => "Delivery created successfully." })
+      redirect_to("/deliveries", { :notice => "Added to list." })
     else
       redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
